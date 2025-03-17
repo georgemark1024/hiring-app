@@ -9,9 +9,35 @@
     <title>Document</title>
 
     <!-- Create the CSS file -->
-     <link rel="stylesheet" href="{% static 'user_mgt_app/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'user_mgt_app/styles.css' %}">
+
+    <!-- Google Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
+    <nav>
+        <div class="nav-bar-container">
+            <div class="nav-bar-logo-container">
+                <a href="{% url 'user-landing' %}"><img class="logo" src="{% static 'user_mgt_app/images/Logo.svg' %}" alt=""></a>
+            </div>
+
+            <div class="nav-bar-links-container">
+                <ul class="nav-bar-list">
+                    <!-- Link to About Us page -->
+                    <li><a class="nav-bar-link" href="#">About Us</a></li>
+                    <!-- Link to Contact Us page; replace # with url_name in urls.py -->
+                    <li><a class="nav-bar-link" href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="nav-bar-buttons-container">
+                <a href="{% url 'user-sign-in' %}"><button class="sign-in button">Sign In</button></a>
+                <a href="{% url 'user-register' %}"><button class="register button">Register</button></a>
+            </div>
+        </div>
+    </nav>
     {% block content %}
       
     {% endblock content %}

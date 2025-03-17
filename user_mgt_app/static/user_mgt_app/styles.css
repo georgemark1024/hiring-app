@@ -1,0 +1,85 @@
+* {
+    /* background-color: #E4FDFE; */
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* border: 1px solid black; */
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+}
+
+.nav-bar-container {
+    background-color: #CFF7D3;
+    display: flex;
+    height: 70px;
+}
+
+.nav-bar-links-container {
+    flex: 3;
+}
+
+.nav-bar-list {
+    list-style: none;
+    display: flex;
+    gap: 43px;
+    height: 100%;
+    align-items: center;
+    font-weight: 500;
+}
+
+.nav-bar-buttons-container,
+.nav-bar-logo-container {
+    display: flex;
+    align-items: center;
+}
+
+.nav-bar-buttons-container {
+    gap: 47px;
+    margin-right: 50px;
+}
+
+.logo {
+    width: 37px;
+    height: auto;
+}
+
+.nav-bar-link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px;
+}
+
+.nav-bar-link:hover {
+    /* background-color: white; */
+    color: black;
+    background-color: #E4FDFE;
+    border-radius: 8px;
+}
+.nav-bar-logo-container {
+    margin-right: 100px;
+    margin-left: 15px;
+}
+
+.button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #767676;
+    cursor: pointer;
+}
+
+.sign-in {
+    background-color: #E3E3E3;
+    color: black
+}
+
+.register {
+    background-color: #2C2C2C;
+    color: white;
+}
+
+/* Implement active color for nav elements */
+.active {
+    background-color: white;
+}

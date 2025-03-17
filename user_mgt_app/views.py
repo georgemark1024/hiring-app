@@ -7,5 +7,5 @@ def landing(request):
 def register(request):
     return render(request, 'user_mgt_app/register.html')
 
-def sign_up(request):
-    return render(request, 'user_mgt_app/sign_up.html')
+def sign_in(request):
+    return render(request, 'user_mgt_app/sign_in.html')
