@@ -169,3 +169,17 @@ nav-bar-link:active {
     background-color: #CFF7D3;
     max-width: 100px;
 }
+
+/* Modify message styles */
+.messages {
+    display: flex;
+    margin: 0 auto;
+    width: 20%;
+    align-items: center;
+}
+
+.messages ul {
+    list-style: none;
+    size: 0.3em;
+    margin-top: 10px;
+}
