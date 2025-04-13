@@ -1,0 +1,104 @@
+/* Hero section */
+.hero-container {
+    display: flex;
+    align-items: center;
+    background-color: #E4FDFE;
+    height: 50vh;
+    padding: 50px 170px;
+    gap: 40px;
+    flex: 1;
+    flex-wrap: wrap;
+}
+
+.hero-text-container, .hero-image-container {
+    flex: 1;
+    /* height: 95%; */
+}
+
+.hero-text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.main-text-container {
+    font-size: 48px;
+    font-weight: 900;
+    color: #6066FF;
+}
+
+.secondary {
+    font-size: 18px;
+    color: #767676;
+}
+
+.hero-button {
+    margin-top: 10px;
+    padding: 10px 40px;
+    font-weight: 700;
+    border: 16px;
+    border-radius: 8px;
+    font-size: 15px;
+    color: white;
+    background-color: #6066FF;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.hero-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(227, 26, 26);
+    border-radius: 16px;
+}
+
+.hero-image {
+    /* border: 5px; */
+    font-weight: 700;
+    font-size: 42px;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-image > img {
+    width: 50%;
+    object-fit: cover;
+}
+
+.quote-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #E4FDFE;
+    height: 50vh;
+    margin-bottom: 50px;
+}
+
+.quote, .quote-author {
+    margin: 0 250px;
+}
+
+.quote {
+    font-size: 36px;
+    font-style:italic;
+    color: #1f2937;
+}
+
+.quote-author {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.footer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
+    background-color: #1f2937;
+    color: white;
+}

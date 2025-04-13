@@ -1,14 +1,39 @@
 {% extends "user_mgt_app/base.html" %}
+{% load static %}
 
 {% block title %}Landing | Hiring{% endblock title %}
 
 {% block content %}
-    <div class="content-container">
-        <div class="main">
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Id, nostrum tenetur consectetur molestias ducimus aperiam porro, veniam accusamus vero ullam iure dolores, voluptatem aut at ad. Ullam labore excepturi pariatur.
+    <section class="hero-container">
+        <div class="hero-text-container">
+            <div class="main-text-container">
+                Find Trusted Service Providers Near You
+            </div>
+            <div class="secondary">
+                A reliable platform to connect you with verified service providers for equipment rental, water delivery, construction equipment hiring, and more — fast, secure, and hassle-free.
+            </div>
+            <div class="button-container">
+                <a class="hero-button" href="{% url 'user-register' %}">Get Started Now!</a>
+            </div>
         </div>
-        <div class="footer">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem aperiam doloribus deserunt tempore aliquam, minus ea molestiae eius voluptate porro, corporis ipsum laborum ipsa unde nihil expedita quaerat neque inventore.
+        
+        <div class="hero-image-container">
+            <div class="hero-image">
+                <img src="{% static 'user_mgt_app/images/hero_image.png' %}" alt="do what matters">
+            </div>
         </div>
-    </div>
+    </section>
+
+    <section class="quote-container">
+        <div class="quote">
+            "At Hiring.com, we turn challenges into solutions. Our commitment is to connect you with the best — so you can focus on what matters."
+        </div>
+        <div class="quote-author">
+            - The Hiring App Team
+        </div>
+    </section>
+
+    <section class="footer">
+        Copyright &copy; The Hiring App Company 2025
+    </section>
 {% endblock content %}

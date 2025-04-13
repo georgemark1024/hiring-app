@@ -8,8 +8,9 @@
     <!-- How to pass titles -->
     <title>{% block title %}{% endblock title %}</title>
 
-    <!-- Create the CSS file -->
+    <!-- Link to CSS file -->
     <link rel="stylesheet" href="{% static 'user_mgt_app/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'user_mgt_app/landing.css' %}">
 
     <!-- Link JS file -->
     <script src="{% static 'user_mgt_app/scripts.js' %}"></script>
@@ -25,9 +26,9 @@
         <div class="nav-bar-container">
             <div class="nav-bar-logo-container">
                 {% if request.user.is_authenticated %}
-                <a href="{% url 'home' %}"><img class="logo" src="{% static 'user_mgt_app/images/Logo.svg' %}" alt=""></a>
+                <a href="{% url 'home' %}"><img class="logo" src="{% static 'user_mgt_app/images/Logo.svg' %}" alt="logo"></a>
                 {% else %}
-                <a href="{% url 'user-landing' %}"><img class="logo" src="{% static 'user_mgt_app/images/Logo.svg' %}" alt=""></a>
+                <a href="{% url 'user-landing' %}"><img class="logo" src="{% static 'user_mgt_app/images/Logo.svg' %}" alt="logo"></a>
                 {% endif %}
             </div>
 
