@@ -11,6 +11,9 @@
     <!-- Create the CSS file -->
     <link rel="stylesheet" href="{% static 'user_mgt_app/styles.css' %}">
 
+    <!-- Link JS file -->
+    <script src="{% static 'user_mgt_app/scripts.js' %}"></script>
+
     <!-- Google Inter font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,31 +24,51 @@
     <nav>
         <div class="nav-bar-container">
             <div class="nav-bar-logo-container">
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'home' %}"><img class="logo" src="{% static 'user_mgt_app/images/Logo.svg' %}" alt=""></a>
+                {% else %}
                 <a href="{% url 'user-landing' %}"><img class="logo" src="{% static 'user_mgt_app/images/Logo.svg' %}" alt=""></a>
+                {% endif %}
             </div>
 
             <div class="nav-bar-links-container">
                 <ul class="nav-bar-list">
-                    <!-- Link to About Us page -->
-                    <li><a class="nav-bar-link" href="#">About Us</a></li>
-                    <!-- Link to Contact Us page; replace # with url_name in urls.py -->
-                    <li><a class="nav-bar-link" href="#">Contact Us</a></li>
+                    <li><a class="nav-bar-link" href="{% url 'about-us' %}">About Us</a></li>
+                    <li><a class="nav-bar-link" href="{% url 'contact' %}">Contact Us</a></li>
                 </ul>
             </div>
+
+            {% if request.user.is_authenticated %}
+            <div class="user-menu">
+                <div class="user-avatar" onclick="toggleMenu()">
+                    {{ request.user.username|slice:":1"|upper }}
+                </div>
+                <div id="dropdown-menu" class="dropdown-content">
+                    <p><strong>{{ request.user.username }}</strong></p>
+                    <hr>
+                    <a href="{% url 'password_change' %}">Change Password</a>
+                    <a href="#">My Profile (coming soon)</a>
+                    <a href="#">Settings (coming soon)</a>
+                    <a href="{% url 'user-logout' %}">Logout</a>
+                </div>
+            </div>
+            {% else %}
             <div class="nav-bar-buttons-container">
-                <a href="{% url 'user-sign-in' %}"><button class="sign-in button">Sign In</button></a>
+                <a href="{% url 'user-sign-in' %}"><button class="sign-in button">Login</button></a>
                 <a href="{% url 'user-register' %}"><button class="register button">Register</button></a>
             </div>
+            {% endif %}
         </div>
     </nav>
 
+    <!-- flash messages section -->
     <div class="messages">
         {% if messages %}
-        <ul>
-            {% for message in messages %}
-                <li>{{ message }}</li>
-            {% endfor %}
-        </ul>
+            <ul>
+                {% for message in messages %}
+                    <li class="message {{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
         {% endif %}
     </div>
 
