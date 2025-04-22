@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'user_mgt_app/images/Logo.svg' %}">
+
     <!-- How to pass titles -->
     <title>{% block title %}{% endblock title %}</title>
 
@@ -73,8 +76,26 @@
         {% endif %}
     </div>
 
-    {% block content %}
-      
-    {% endblock content %}
+    <div class="content-container">
+        {% if request.user.is_authenticated %}
+        <div class="sider-bar-container">
+            <div class="side-bar">
+                <ul class="side-bar-list">
+                    <li><a href="#">Booking a service</a></li>
+                    <li><a href="#">Manage listings</a></li>
+                    <li><a href="#">Messages</a></li>
+                    <li><a href="#">History</a></li>
+                    <li><a href="#">Support</a></li>
+                </ul>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="main-container">
+            {% block content %}
+            
+            {% endblock content %}
+        </div>
+    </div>
 </body>
 </html>

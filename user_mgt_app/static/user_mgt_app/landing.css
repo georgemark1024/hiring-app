@@ -1,4 +1,11 @@
 /* Hero section */
+.landing-page-container {
+    display: flex;
+    flex-direction: column;
+    width: 100;
+    background-color: #E4FDFE;
+}
+
 .hero-container {
     display: flex;
     align-items: center;
