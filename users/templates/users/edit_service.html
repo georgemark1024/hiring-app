@@ -1,4 +1,9 @@
 {% extends 'users/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'users/css/services.css' %}">
+{% endblock styles %}
 
 <!-- Navigation bar -->
 {% block nav %}
@@ -16,11 +21,45 @@
 {% endblock side_bar %}
 
 {% block content %}
-  <h2>Edit Service: {{ service.name }}</h2>
-
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit">Update Service</button>
-  </form>
+  <section class="service-section">
+    <h2>Edit Service: {{ service.name }}</h2>
+    <form class="edit-service-form" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <div class="service-form-input-container">
+        <div class="service-form-label">{{form.name.label}}</div>
+        <div class="service-form-input">{{ form.name }}</div>
+      </div>
+  
+      <div class="service-form-input-container">
+        <div class="service-form-label">{{ form.description.label }}</div>
+        <div class="service-form-input">{{ form.description }}</div>
+      </div>
+  
+      <div class="service-form-input-container">
+        <div class="service-form-label">{{ form.category.label }}</div>
+        <div class="service-form-input">{{ form.category }}</div>
+      </div>
+  
+      <div class="service-form-input-container">
+        <div class="service-form-label">{{ form.price.label }}</div>
+        <div class="service-form-input">{{ form.price }}</div>
+      </div>
+  
+      <div class="service-form-input-container">
+        <div class="service-form-label">{{ form.location.label }}</div>
+        <div class="service-form-input">{{ form.location }}</div>
+      </div>
+  
+      <div class="service-form-input-container">
+        <div class="service-form-label">{{ form.image.label }}</div>
+        <div class="service-form-input">{{ form.image }}</div>
+      </div>
+  
+      <div class="service-form-input-container checkbox-row">
+        <div class="service-form-label">{{ form.available.label }}</div>
+        <div class="service-form-input">{{ form.available }}</div>
+      </div>
+      <button class="edit-service-button" type="submit">Update Service</button>
+    </form>
+  </section>
 {% endblock %}

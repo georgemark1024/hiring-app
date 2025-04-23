@@ -4,7 +4,7 @@
 
 <!-- Search results styles -->
 {% block styles %}
-<link rel="stylesheet" href="{% static 'users/css/search_results.css' %}">
+<link rel="stylesheet" href="{% static 'users/css/services.css' %}">
 {% endblock styles %}
 
 <!-- Navigation bar -->
@@ -23,21 +23,23 @@
 {% endblock side_bar %}
 
 {% block content %}
-  <h2>Available Services</h2>
-  <div class="service-list">
-    {% for service in services %}
-      <div class="service-card">
-        {% if service.image %}
-          <img src="{{ service.image.url }}" alt="{{ service.name }}" width="150">
-        {% endif %}
-        <h3>{{ service.name }}</h3>
-        <p>{{ service.description|truncatewords:20 }}</p>
-        <p><strong>Category:</strong> {{ service.category }}</p>
-        <p><strong>Price:</strong> KES {{ service.price }}</p>
-        <p><strong>Location:</strong> {{ service.location }}</p>
-      </div>
-    {% empty %}
-      <p>No services available at the moment.</p>
-    {% endfor %}
-  </div>
+  <section class="service-section">
+    <h2>Available Services</h2>
+    <div class="service-list">
+      {% for service in services %}
+        <div class="service-card">
+          {% if service.image %}
+            <img src="{{ service.image.url }}" alt="{{ service.name }}" width="150">
+          {% endif %}
+          <h3>{{ service.name }}</h3>
+          <p>{{ service.description|truncatewords:20 }}</p>
+          <p><strong>Category:</strong> {{ service.category }}</p>
+          <p><strong>Price:</strong> KES {{ service.price }}</p>
+          <p><strong>Location:</strong> {{ service.location }}</p>
+        </div>
+      {% empty %}
+        <p>No services available at the moment.</p>
+      {% endfor %}
+    </div>
+  </section>
 {% endblock %}

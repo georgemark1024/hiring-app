@@ -8,9 +8,16 @@
 
 .side-bar {
     background-color: #FFFAFA;
+    /* background-color: #1f2937; */
+    /* color: white; */
     padding: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
+    position: fixed;
+    top: auto;
+    left: 20px;
+    bottom: auto;
+    overflow-y: auto;
 }
 
 .side-bar-list {
@@ -25,8 +32,26 @@
 
 .side-bar-list li {
     width: 100%;
+    color: #6066FF;
+    /* color: white; */
 }
 
 .side-bar-list a {
     text-decoration: none;
+    transition: background 0.2s;
+    display: block;
+    padding: 5px 5px;
+    color: #3b41e0;
+    border-radius: 6px;
+}
+
+.side-bar a:hover {
+    background-color: #e0d8f0;
+}
+
+.side-bar a.active {
+    /* background-color: #4a148c; */
+    background-color: #6066FF;
+    color: white;
+    font-weight: bold;
 }

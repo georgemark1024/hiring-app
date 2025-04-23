@@ -4,9 +4,9 @@ from django.contrib.auth import views as auth_views
 from . import views
 
 urlpatterns = [
-    path('', views.landing, name="user_landing"),
-    path('register/', views.register, name="user_register"),    # change to signup
-    path('sign-in/', views.custom_login, name="user_sign_in"),  # change to login
+    path('', views.landing, name="landing"),
+    path('register/', views.register, name="register"),    # change to signup
+    path('login/', views.custom_login, name="login"),  # change to login
     path('home/', views.home, name="home"),
     path('about-us/', TemplateView.as_view(template_name="users/about_us.html"), name="about_us"),
     path('contact-us/', TemplateView.as_view(template_name="users/contact.html"), name="contact"),
@@ -17,5 +17,7 @@ urlpatterns = [
     path('search-services/', views.search_services, name="search_services"),
     path('services/<int:service_id>/edit/', views.edit_service, name='edit_service'),
     path('my-services/', views.my_services, name="my_services"),
+    path('list-services/', views.list_services, name="list_services"),
+    path('add-service/', views.add_service, name="add_service"),
 
 ]

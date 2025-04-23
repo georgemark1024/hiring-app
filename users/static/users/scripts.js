@@ -15,13 +15,15 @@ window.onclick = function(event) {
         }
     }
 }
-
+  
 function togglePassword(inputId) {
     const input = document.getElementById(inputId);
+    const icon = input.nextElementSibling;
     if (input.type === "password") {
-      input.type = "text";
+        input.type = "text";
+        icon.textContent = "🙈";
     } else {
-      input.type = "password";
+        input.type = "password";
+        icon.textContent = "👁️";
     }
-  }
-  
+}

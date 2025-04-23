@@ -7,6 +7,11 @@
     {% include "users/components/nav.html" %}
 {% endblock nav %}
 
+<!-- Flash messages -->
+{% block messages %}
+    {% include "users/components/messages.html" %}
+{% endblock messages %}
+
 {% block content %}
     <div id="register-form-container" class="form-container">
         <h1 class="form-title">Register</h1>
@@ -19,20 +24,21 @@
             <!-- <input class="form-input" type="password" name="password" id="password" placeholder="Password" autocomplete="new-password"><br> -->
             <!-- <input class="form-input" type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password"><br> -->
 
-            <div class="password-container">
-                <input class="form-input" type="password" name="password" id="password" placeholder="Password" autocomplete="new-password"><br>
-                <button type="button" onclick="togglePassword('password')">👁️</button>
-            </div>
-
-            <div class="password-container">
-                <input class="form-input" type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password"><br>
-                <button type="view-password button" onclick="togglePassword('confirm-password')">👁️</button>
+            <div class="password-fields">
+                <div class="password-container">
+                    <input type="password" name="password" id="password" placeholder="Password" autocomplete="new-password">
+                    <span class="toggle-password" type="button" onclick="togglePassword('password')">👁️</span>
+                </div>
+                <div class="password-container">
+                    <input type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password">
+                    <span class="toggle-password" type="button" onclick="togglePassword('confirm-password')">👁️</span>
+                </div>
             </div>
 
             <div class="form-buttons-container">
                 <button class="form-button form-register" type="submit">Register</button>
                 <!-- How to implement the sign in button -->
-                <a class="register-sign-in-link form-button form-sign-in" href="{% url 'user_sign_in' %}">Have an account? Sign in</a>
+                <a class="register-sign-in-link form-button form-sign-in" href="{% url 'login' %}">Have an account? Login</a>
             </div> 
 
         </form>

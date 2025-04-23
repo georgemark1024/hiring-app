@@ -14,10 +14,16 @@
             <li><a href="#">Book a service</a></li>
             {% endif %}
             {% if user|has_group:"ServiceProvider"%}
-            <li><a href="{% url 'my_services' %}">My services</a></li>
-            <li><a href="#">Add service</a></li>
+            <li>
+                <a class="{% if request.resolver_match.url_name == 'my_services' %}active{% endif %}" href="{% url 'my_services' %}">My services</a>
+            </li>
+            <li>
+                <a class="{% if request.resolver_match.url_name == 'add_service' %}active{% endif %}" href="{% url 'add_service' %}">Add service</a>
+            </li>
             {% endif %}
-            <li><a href="#">View services</a></li>
+            <li>
+                <a class="{% if request.resolver_match.url_name == 'list_services' %}active{% endif %}" href="{% url 'list_services' %}">List services</a>
+            </li>
             <li><a href="#">Messages</a></li>
             <li><a href="#">History</a></li>
             <li><a href="#">Support</a></li>

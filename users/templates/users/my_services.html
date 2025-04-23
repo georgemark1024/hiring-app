@@ -1,4 +1,9 @@
 {% extends 'users/base.html' %}
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'users/css/services.css' %}">
+{% endblock styles %}
 
 <!-- Navigation bar -->
 {% block nav %}
@@ -16,18 +21,18 @@
 {% endblock side_bar %}
 
 {% block content %}
-  <h2>My Services</h2>
-
-  {% if services %}
-    <ul>
-      {% for service in services %}
-        <li>
-          <strong>{{ service.name }}</strong> – {{ service.category }} – KES {{ service.price }}
-          <a href="{% url 'edit_service' service.id %}">Edit</a>
-        </li>
-      {% endfor %}
-    </ul>
-  {% else %}
-    <p>You haven't added any services yet.</p>
-  {% endif %}
+  <section class="service-section">
+    <h2>My Services</h2>
+    {% if services %}
+      <ul class="my-service-list">
+        {% for service in services %}
+          <li>
+            <a href="{% url 'edit_service' service.id %}"><strong>{{ service.name }}</strong></a> – {{ service.category }} – KES {{ service.price }}
+          </li>
+        {% endfor %}
+      </ul>
+    {% else %}
+      <p>You haven't added any services yet.</p>
+    {% endif %}
+  </section>
 {% endblock content %}

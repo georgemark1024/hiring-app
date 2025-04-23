@@ -1,5 +1,10 @@
 {% extends 'users/base.html' %}
 
+<!-- Navigation bar -->
+{% block nav %}
+    {% include "users/components/nav.html" %}
+{% endblock nav %}
+
 {% block content %}
   <div style="padding: 20px;">
       <h2>Select Your User Type</h2>

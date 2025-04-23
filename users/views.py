@@ -8,6 +8,8 @@ from .forms import UserTypeForm, ServiceForm
 from .models import Service
 
 def landing(request):
+    if request.user.is_authenticated:
+        return redirect('home')
     return render(request, 'users/landing.html')
 
 def register(request):
@@ -21,7 +23,7 @@ def register(request):
 
         if password != confirm_password:
             messages.error(request, "Passwords do not match.")
-            return redirect('user_register')
+            return redirect('register')
 
         try:
             user = User.objects.create_user(username=username, password=password)
@@ -37,9 +39,9 @@ def register(request):
             return redirect('home')
         except Exception as e:
             messages.error(request, f"An error occurred: {e}")
-    return render(request, 'users/select_user_type.html')
+    return render(request, 'users/register.html')
 
-@login_required(login_url='user_sign_in')
+@login_required(login_url='login')
 def home(request):
     return render(request, "users/home.html")
 
@@ -53,15 +55,15 @@ def custom_login(request):
             return redirect("home")
         else:
             messages.error(request, "Invalid username or password.")
-    return render(request, 'users/sign_in.html')
+    return render(request, 'users/login.html')
 
-@login_required(login_url='user_sign_in')
+@login_required(login_url='login')
 def user_logout(request):
     messages.success(request, "You have been logged out successfully.")
     logout(request)
-    return redirect('user_landing')
+    return redirect('landing')
 
-@login_required(login_url='user_sign_in')
+@login_required(login_url='login')
 def select_user_type(request):
     if request.method == 'POST':
         form = UserTypeForm(request.POST)
@@ -88,13 +90,21 @@ def select_user_type(request):
 
     return render(request, 'users/select_user_type.html', {'form': form})
 
-@login_required(login_url='user_sign_in')
+@login_required(login_url='login')
 def search_services(request):
     query = request.GET.get('q')
-    results = Service.objects.filter(name__icontains=query).order_by('-created_at')
-    return render(request, 'users/search_results.html', {'results': results, 'query': query})
 
-@login_required(login_url='user_sign_in')
+    if not query:
+        # If no query, return to same page
+        return redirect(request.META.get('HTTP_REFERER', '/'))
+
+    results = Service.objects.filter(name__icontains=query).order_by('-created_at')
+    return render(request, 'users/search_results.html', {
+        'results': results,
+        'query': query
+    })
+
+@login_required(login_url='login')
 def add_service(request):
     if not request.user.groups.filter(name="ServiceProvider").exists():
         return redirect('home')  # deny access for clients
@@ -105,18 +115,18 @@ def add_service(request):
             service = form.save(commit=False)
             service.provider = request.user
             service.save()
-            return redirect('list_services')
+            return redirect('my_services')
     else:
         form = ServiceForm()
 
     return render(request, 'users/add_service.html', {'form': form})
 
-@login_required(login_url='user_sign_in')
+@login_required(login_url='login')
 def list_services(request):
     services = Service.objects.filter(available=True).order_by('-created_at')
     return render(request, 'users/list_services.html', {'services': services})
 
-@login_required(login_url='user_sign_in')
+@login_required(login_url='login')
 def edit_service(request, service_id):
     service = get_object_or_404(Service, id=service_id, provider=request.user)
 
@@ -130,7 +140,7 @@ def edit_service(request, service_id):
 
     return render(request, 'users/edit_service.html', {'form': form, 'service': service})
 
-@login_required(login_url='user_sign_in')
+@login_required(login_url='login')
 def my_services(request):
     services = Service.objects.filter(provider=request.user)
     return render(request, 'users/my_services.html', {'services': services})
