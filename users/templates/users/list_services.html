@@ -1,0 +1,43 @@
+{% extends 'users/base.html' %}
+
+{% load static %}
+
+<!-- Search results styles -->
+{% block styles %}
+<link rel="stylesheet" href="{% static 'users/css/search_results.css' %}">
+{% endblock styles %}
+
+<!-- Navigation bar -->
+{% block nav %}
+    {% include "users/components/nav.html" %}
+{% endblock nav %}
+
+<!-- Flash messages -->
+{% block messages %}
+    {% include "users/components/messages.html" %}
+{% endblock messages %}
+
+<!-- Side bar -->
+{% block side_bar %}
+  {% include "users/components/side_bar.html" %}
+{% endblock side_bar %}
+
+{% block content %}
+  <h2>Available Services</h2>
+  <div class="service-list">
+    {% for service in services %}
+      <div class="service-card">
+        {% if service.image %}
+          <img src="{{ service.image.url }}" alt="{{ service.name }}" width="150">
+        {% endif %}
+        <h3>{{ service.name }}</h3>
+        <p>{{ service.description|truncatewords:20 }}</p>
+        <p><strong>Category:</strong> {{ service.category }}</p>
+        <p><strong>Price:</strong> KES {{ service.price }}</p>
+        <p><strong>Location:</strong> {{ service.location }}</p>
+      </div>
+    {% empty %}
+      <p>No services available at the moment.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

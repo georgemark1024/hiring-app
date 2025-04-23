@@ -1,0 +1,52 @@
+{% load static %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'users/css/nav.css' %}">
+{% endblock styles %}
+
+<nav>
+    <div class="nav-bar-container">
+        <div class="nav-bar-logo-container">
+            {% if request.user.is_authenticated %}
+            <a href="{% url 'home' %}"><img class="logo" src="{% static 'users/images/Logo.svg' %}" alt="logo"></a>
+            {% else %}
+            <a href="{% url 'user_landing' %}"><img class="logo" src="{% static 'users/images/Logo.svg' %}" alt="logo"></a>
+            {% endif %}
+        </div>
+
+        <div class="nav-bar-links-container">
+            <ul class="nav-bar-list">
+                {% if request.user.is_authenticated %}
+                {% block search %}
+                {% include "users/components/search.html" %}
+                {% endblock search %}
+                <div>messages</div>
+                {% else %}
+                <li><a class="nav-bar-link" href="{% url 'about_us' %}">About Us</a></li>
+                <li><a class="nav-bar-link" href="{% url 'contact' %}">Contact Us</a></li>
+                {% endif %}
+            </ul>
+        </div>
+
+        {% if request.user.is_authenticated %}
+        <div class="user-menu">
+            <div class="user-avatar" onclick="toggleMenu()">
+                {{ request.user.username|slice:":1"|upper }}
+            </div>
+            <div id="dropdown-menu" class="dropdown-content">
+                <p><strong>{{ request.user.username }}</strong></p>
+                <hr>
+                <a href="{% url 'password_change' %}">Change Password</a>
+                <a href="#">My Profile (coming soon)</a>
+                <a href="#">Settings (coming soon)</a>
+                <a href="{% url 'user-logout' %}">Logout</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="nav-bar-buttons-container">
+            <a href="{% url 'user_sign_in' %}"><button class="sign-in button">Login</button></a>
+            <a href="{% url 'user_register' %}"><button class="register button">Register</button></a>
+        </div>
+        {% endif %}
+    </div>
+</nav>

@@ -1,0 +1,13 @@
+.dashboard-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    justify-content: space-between;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    /* background-color: #6066FF; */
+}
+
+.main-container {
+    background-color: #FFFAFA;
+}

@@ -1,0 +1,50 @@
+/* Modify message styles */
+.messages {
+    display: flex;
+    margin: 0 auto;
+    width: 20%;
+    align-items: center;
+}
+
+.messages ul {
+    list-style: none;
+    size: 0.3em;
+    margin-top: 10px;
+}
+
+.messages ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.message {
+    padding: 15px 20px;
+    margin-bottom: 15px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
+    color: #fff;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    animation: fadeIn 0.5s ease;
+}
+
+/* Success Message */
+.message.success {
+    background-color: #4CAF50;
+}
+
+/* Error Message */
+.message.error {
+    background-color: #f44336;
+}
+
+/* Info Message */
+.message.info {
+    background-color: #2196F3;
+}
+
+/* Warning Message */
+.message.warning {
+    background-color: #ff9800;
+}

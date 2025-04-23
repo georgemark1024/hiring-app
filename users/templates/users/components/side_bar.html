@@ -1,0 +1,27 @@
+{% load static %}
+
+{% load user_tags %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'users/css/side_bar.css' %}">
+{% endblock styles %}
+
+{% if request.user.is_authenticated %}
+<div class="sider-bar-container">
+    <div class="side-bar">
+        <ul class="side-bar-list">
+            {% if user|has_group:"Client" %}
+            <li><a href="#">Book a service</a></li>
+            {% endif %}
+            {% if user|has_group:"ServiceProvider"%}
+            <li><a href="{% url 'my_services' %}">My services</a></li>
+            <li><a href="#">Add service</a></li>
+            {% endif %}
+            <li><a href="#">View services</a></li>
+            <li><a href="#">Messages</a></li>
+            <li><a href="#">History</a></li>
+            <li><a href="#">Support</a></li>
+        </ul>
+    </div>
+</div>
+{% endif %}

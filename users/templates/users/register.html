@@ -1,0 +1,40 @@
+{% extends "users/base.html" %}
+
+{% block title %}Register | Hiring{% endblock title %}
+
+<!-- Navigation bar -->
+{% block nav %}
+    {% include "users/components/nav.html" %}
+{% endblock nav %}
+
+{% block content %}
+    <div id="register-form-container" class="form-container">
+        <h1 class="form-title">Register</h1>
+        <form class="form" action="#" method="post">
+            {% csrf_token %}
+            <input class="form-input" type="text" name="fname" id="fname" placeholder="First Name"><br>
+            <input class="form-input" type="text" name="lname" id="lname" placeholder="Last Name"><br>
+            <input class="form-input" type="email" name="email" id="email" placeholder="E-mail"><br>
+            <input class="form-input" type="tel" name="phone" id="phone" placeholder="Phone"><br>
+            <!-- <input class="form-input" type="password" name="password" id="password" placeholder="Password" autocomplete="new-password"><br> -->
+            <!-- <input class="form-input" type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password"><br> -->
+
+            <div class="password-container">
+                <input class="form-input" type="password" name="password" id="password" placeholder="Password" autocomplete="new-password"><br>
+                <button type="button" onclick="togglePassword('password')">👁️</button>
+            </div>
+
+            <div class="password-container">
+                <input class="form-input" type="password" name="confirm-password" id="confirm-password" placeholder="Confirm Password"><br>
+                <button type="view-password button" onclick="togglePassword('confirm-password')">👁️</button>
+            </div>
+
+            <div class="form-buttons-container">
+                <button class="form-button form-register" type="submit">Register</button>
+                <!-- How to implement the sign in button -->
+                <a class="register-sign-in-link form-button form-sign-in" href="{% url 'user_sign_in' %}">Have an account? Sign in</a>
+            </div> 
+
+        </form>
+    </div>
+{% endblock content %}

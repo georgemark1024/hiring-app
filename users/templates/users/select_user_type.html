@@ -1,0 +1,12 @@
+{% extends 'users/base.html' %}
+
+{% block content %}
+  <div style="padding: 20px;">
+      <h2>Select Your User Type</h2>
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+      </form>
+  </div>
+{% endblock %}

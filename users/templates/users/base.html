@@ -1,0 +1,43 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'users/images/Logo.svg' %}">
+
+    <!-- How to pass titles -->
+    <title>{% block title %}{% endblock title %}</title>
+
+    <!-- Link to CSS file -->
+    <link rel="stylesheet" href="{% static 'users/css/base.css' %}">
+    {% block styles %}{% endblock styles %}
+
+    <!-- Link JS file -->
+    <script src="{% static 'users/scripts.js' %}"></script>
+
+    <!-- Google Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+</head>
+<body>
+    <!-- navigation section -->
+    {% block nav %}{% endblock nav %}
+
+    <!-- flash messages section -->
+    {% block messages %}{% endblock messages %}
+
+    <div class="content-container">
+        <!-- side_bar section -->
+        {% block side_bar %}{% endblock side_bar %}
+
+        <div class="main-container">
+            {% block content %}{% endblock content %}
+        </div>
+    </div>
+</body>
+</html>

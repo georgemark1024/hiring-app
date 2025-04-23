@@ -1,0 +1,148 @@
+nav {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.nav-bar-container {
+    background-color: #8ddb95;
+    display: flex;
+    height: 15vh;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    width: 85%;
+    border-radius: 16px;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.nav-bar-links-container {
+    display: flex;
+    margin-left: auto;
+    padding: 0 20px;
+    margin-right: 30px;
+}
+
+.nav-bar-buttons-container,
+.nav-bar-logo-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo {
+    width: 37px;
+    height: auto;
+}
+
+.nav-bar-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    height: 100%;
+    align-items: center;
+    font-weight: 500;
+}
+
+.nav-bar-link {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px;
+}
+
+.nav-bar-link:hover {
+    /* background-color: white; */
+    color: black;
+    background-color: #E4FDFE;
+    border-radius: 8px;
+}
+
+/* Implement active color for nav elements */
+nav-bar-link:active {
+    background-color: white;
+}
+
+.nav-bar-buttons-container {
+    gap: 25px;
+    margin-right: 50px;
+}
+
+.nav-bar-logo-container {
+    margin-right: 100px;
+    margin-left: 15px;
+}
+
+/* User avatar circle */
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-weight: bold;
+    user-select: none;
+}
+
+/* Dropdown container */
+.dropdown-content {
+    display: none;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background-color: #fff;
+    min-width: 180px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    border-radius: 8px;
+    z-index: 99;
+    overflow: hidden;
+}
+
+/* Dropdown links */
+.dropdown-content a {
+    color: #333;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content p {
+    padding: 12px 16px;
+    margin: 0;
+}
+
+.dropdown-content hr {
+    margin: 0;
+    border: 0;
+    border-top: 1px solid #eee;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Show dropdown when active */
+.dropdown-content.show {
+    display: block;
+}
+
+.sign-in {
+    background-color: #E3E3E3;
+    color: black
+}
+
+.register {
+    background-color: #2C2C2C;
+    color: white;
+}
+
+.button {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 1px solid #767676;
+    cursor: pointer;
+}

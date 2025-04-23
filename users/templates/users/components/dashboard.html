@@ -1,0 +1,31 @@
+{% load static %}
+
+{% load user_tags %}
+
+{% block styles %}
+<link rel="stylesheet" href="{% static 'users/css/dashboard.css' %}">
+{% endblock styles %}
+
+<div class="dashboard-container">
+  {% if user|has_both_groups %}
+    <!-- Combined group dashboard content -->
+      {% block combined_dashboard %}
+          {% include "users/components/combined_dashboard.html" %}
+      {% endblock combined_dashboard %}
+  
+  {% elif user|has_group:"ServiceProvider" %}
+    <!-- Service Provider dashboard content -->
+      {% block service_provider_dashboard %}
+          {% include "users/components/service_provider_dashboard.html" %}
+      {% endblock service_provider_dashboard %}
+  
+  {% elif user|has_group:"Client" %}
+    <!-- Client dashboard content -->
+      {% block client_dashboard %}
+          {% include "users/components/client_dashboard.html" %}
+      {% endblock client_dashboard %}
+  
+  {% else %}
+    <p>Please select your user type <a href="{% url 'select_user_type' %}">here</a>.</p>
+  {% endif %}
+</div>
