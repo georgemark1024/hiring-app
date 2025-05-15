@@ -2,6 +2,14 @@
 
 {% block title %}Login | Hiring{% endblock title %}
 
+{% block styles %}
+<style>
+.main-container {
+    background-color: #E4FDFE;
+}
+</style>
+{% endblock styles %}
+
 <!-- Navigation bar -->
 {% block nav %}
     {% include "users/components/nav.html" %}
@@ -9,7 +17,7 @@
 
 <!-- Flash messages -->
 {% block messages %}
-    {% include "users/components/messages.html" %}
+    {% include "users/components/flash_messages.html" %}
 {% endblock messages %}
 
 {% block content %}

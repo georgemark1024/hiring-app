@@ -1,7 +1,6 @@
 {% extends "users/base.html" %}
 
-<!-- Page title -->
-{% block title %}Home{% endblock title %}
+{% block title %}About Us | Hiring{% endblock title %}
 
 <!-- Navigation bar -->
 {% block nav %}
@@ -18,7 +17,12 @@
   {% include "users/components/side_bar.html" %}
 {% endblock side_bar %}
 
-<!-- Content area -->
 {% block content %}
-    {% include "users/components/dashboard.html" %}
+<h2>History</h2>
+
+{% for booking in completed_bookings %}
+<strong>{{booking.service.name}}</strong> on {{booking.booking_date}}
+{% empty %}
+<p>No history yet</p>
+{% endfor %}
 {% endblock content %}

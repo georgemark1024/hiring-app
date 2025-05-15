@@ -1,7 +1,6 @@
-{% extends "users/base.html" %}
+{% extends 'users/base.html' %}
 
-<!-- Page title -->
-{% block title %}Home{% endblock title %}
+{% block title %}Send Message | Hiring{% endblock title %}
 
 <!-- Navigation bar -->
 {% block nav %}
@@ -18,7 +17,14 @@
   {% include "users/components/side_bar.html" %}
 {% endblock side_bar %}
 
-<!-- Content area -->
 {% block content %}
-    {% include "users/components/dashboard.html" %}
+{% if message %}
+<p>
+    <strong>{{message.sender}}</strong><br>
+    <strong>{{message.subject}}</strong> {{message.body}}<br>
+    Sent at {{message.sent_at}}
+
+    <a href="{% url 'reply_message' message.sender.username message.id %}">Reply</a>
+</p>
+{% endif %}
 {% endblock content %}

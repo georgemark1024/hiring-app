@@ -1,0 +1,15 @@
+<h2>Recent History</h2>
+{% if completed_bookings %}
+<ul class="booking-list">
+    {% for booking in bookings %}
+        <li class="booking-card">
+        <strong>Service:</strong> {{ booking.service.name }}<br>
+        <strong>Provider:</strong> {{ booking.service.provider.username }}<br>
+        <strong>Booked on:</strong> {{ booking.booking_date|date:"M d, Y H:i" }}<br>
+        <strong>Status:</strong> {{ booking.status }}
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>No history available</p>
+{% endif %}

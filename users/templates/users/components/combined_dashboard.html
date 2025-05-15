@@ -1,9 +1,17 @@
-<h2>Combined Dashboard</h2>
+<h2>Hello {{ request.user.first_name|default:request.user.username }}</h2>
     
 <div>
-    active bookings (requested and providing; see how to separate)
+    {% block active_bookings %}
+    {% include "users/components/client_bookings.html" %}
+    {% endblock active_bookings %}
 </div>
-    
+
+<div>
+    {% block pending_bookings %}
+    {% include "users/components/pending_bookings.html" %}
+    {% endblock pending_bookings %}
+</div>
+
 <div>
     Performance of rating over time/Current rating
 </div>
@@ -13,5 +21,7 @@
 </div>
 
 <div>
-    History of past bookings, if none -> not available or don't show the section at all
+    {% block service_history %}
+    {% include "users/components/service_history.html" %}
+    {% endblock service_history %}
 </div>

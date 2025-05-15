@@ -1,0 +1,22 @@
+<h2>My Bookings</h2>
+{% if client_bookings %}
+<ul class="booking-list">
+    {% for booking in client_bookings %}
+        <li class="booking-card">
+        <strong>Service:</strong> {{ booking.service.name }}<br>
+        <strong>Provider:</strong> {{ booking.service.provider.username }}<br>
+        <strong>Booked on:</strong> {{ booking.booking_date|date:"M d, Y H:i" }}<br>
+        <strong>Status:</strong> {{ booking.status }}
+        {% if booking.status == "Pending" %}
+        <form method="post" action="{% url 'cancel_booking' booking.id %}">
+        {% csrf_token %}
+            <button type="submit" onclick="return confirm('Cancel this booking?')">Cancel</button>
+        </form>
+        <a href="{% url 'send_message' booking.service.provider.username %}">Send message</a>
+        {% endif %}
+        </li>
+    {% endfor %}
+</ul>
+{% else %}
+<p>You don't have any bookings at the moment.</p>
+{% endif %}

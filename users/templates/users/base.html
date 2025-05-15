@@ -40,4 +40,14 @@
         </div>
     </div>
 </body>
+<script>
+    setTimeout(function() {
+      const messageContainer = document.getElementById('message-container');
+      if (messageContainer) {
+        messageContainer.style.transition = "opacity 0.5s ease";
+        messageContainer.style.opacity = 0;
+        setTimeout(() => messageContainer.style.display = 'none', 500);
+      }
+    }, 1500); // 1.5 seconds delay before fade starts
+  </script>
 </html>

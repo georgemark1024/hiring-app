@@ -23,6 +23,9 @@
 
 .my-service-list {
     list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
 }
 
 .add-service-form,

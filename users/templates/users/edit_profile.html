@@ -1,7 +1,6 @@
 {% extends "users/base.html" %}
 
-<!-- Page title -->
-{% block title %}Home{% endblock title %}
+{% block title %}Edit Profile | Hiring{% endblock title %}
 
 <!-- Navigation bar -->
 {% block nav %}
@@ -18,7 +17,13 @@
   {% include "users/components/side_bar.html" %}
 {% endblock side_bar %}
 
-<!-- Content area -->
 {% block content %}
-    {% include "users/components/dashboard.html" %}
+<h2>Edit Your Profile</h2>
+
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  {{ user_form.as_p }}
+  {{ profile_form.as_p }}
+  <button type="submit">Save</button>
+</form>
 {% endblock content %}

@@ -1,6 +1,6 @@
 {% extends 'users/base.html' %}
 
-{% block title %}Change password | Hiring{% endblock title %}
+{% block title %}Send Message | Hiring{% endblock title %}
 
 <!-- Navigation bar -->
 {% block nav %}
@@ -18,12 +18,18 @@
 {% endblock side_bar %}
 
 {% block content %}
-  <div class="form-container">
-      <h2>Change Password</h2>
-      <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Change Password</button>
-      </form>
+{% if parent %}
+  <div class="original-message">
+    <h4>Replying to:</h4>
+    <p><strong>{{ parent.sender }}</strong>: {{ parent.body }}</p>
+    <hr>
   </div>
+{% endif %}
+
+<h2>Send a Message</h2>
+<form method="post">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit">Send</button>
+</form>
 {% endblock %}

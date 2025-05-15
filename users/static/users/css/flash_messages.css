@@ -1,4 +1,14 @@
 /* Modify message styles */
+#message-container {
+    position: fixed;
+    top: 20vh;
+    right: auto;
+    left: auto;
+    width: 300px;
+    z-index: 9999;
+    padding: 0;
+}
+
 .messages {
     display: flex;
     margin: 0 auto;

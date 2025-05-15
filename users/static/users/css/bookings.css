@@ -1,0 +1,9 @@
+.main-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.booking-list {
+    list-style-type: none;
+    padding: 5px;
+}

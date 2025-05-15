@@ -14,7 +14,7 @@
 
 <!-- Flash messages -->
 {% block messages %}
-    {% include "users/components/messages.html" %}
+    {% include "users/components/flash_messages.html" %}
 {% endblock messages %}
 
 <!-- Side bar -->
@@ -36,6 +36,11 @@
           <p><strong>Category:</strong> {{ service.category }}</p>
           <p><strong>Price:</strong> KES {{ service.price }}</p>
           <p><strong>Location:</strong> {{ service.location }}</p>
+          <form method="post" action="{% url 'book_service' service.id %}">
+            {% csrf_token %}
+            <button type="submit">Book Service</button><br>
+          </form>
+          <a href="{% url 'send_message' service.provider.username %}">Send message</a>
         </div>
       {% empty %}
         <p>No services available at the moment.</p>

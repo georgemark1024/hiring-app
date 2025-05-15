@@ -1,9 +1,17 @@
-<h2>Service Provider Dashboard</h2>
+<h2>Hello {{ request.user.first_name|default:request.user.username }}</h2>
 
 <div>
-    active bookings
+    {% block active_bookings %}
+    {% include "users/components/bookings.html" %}
+    {% endblock active_bookings %}
 </div>
-    
+
+<div>
+    {% block pending_bookings %}
+    {% include "users/components/pending_bookings.html" %}
+    {% endblock pending_bookings %}
+</div>
+
 <div>
     Performance of rating over time/Current rating
 </div>

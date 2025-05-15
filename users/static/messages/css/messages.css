@@ -1,0 +1,20 @@
+.inbox-list {
+    list-style: none;
+    padding: 0;
+}
+  
+.inbox-message {
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+}
+  
+.inbox-message.unread {
+    background-color: #f9f9f9;
+    font-weight: bold;
+}
+  
+.inbox-message a {
+    text-decoration: none;
+    color: inherit;
+}
+  

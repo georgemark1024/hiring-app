@@ -1,9 +1,21 @@
-<h2>Client Dashboard</h2>
+<h2>Hello {{ request.user.first_name|default:request.user.username }}</h2>
 
 <div>
-    active bookings and their status
+    <!-- pending bookings -->
+    {% block pending_bookings %}
+    {% include "users/components/client_bookings.html" %}
+    {% endblock pending_bookings %}
 </div>
-    
+
 <div>
-    History of past bookings, if none -> not available or don't show the section at all
+    <!-- accepted bookings -->
+     {% block accepted_bookings %}
+     {% include "users/components/clients_accepted_bookings.html" %}
+     {% endblock accepted_bookings %}
+</div>
+<div>
+    <!-- completed bookings -->
+    {% block service_history %}
+    {% include "users/components/service_history.html" %}
+    {% endblock service_history %}
 </div>

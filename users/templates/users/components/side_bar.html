@@ -11,7 +11,7 @@
     <div class="side-bar">
         <ul class="side-bar-list">
             {% if user|has_group:"Client" %}
-            <li><a href="#">Book a service</a></li>
+            <li><a class="{% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Dashboard</a></li>
             {% endif %}
             {% if user|has_group:"ServiceProvider"%}
             <li>
@@ -20,12 +20,13 @@
             <li>
                 <a class="{% if request.resolver_match.url_name == 'add_service' %}active{% endif %}" href="{% url 'add_service' %}">Add service</a>
             </li>
+            <li><a class="{% if request.resolver_match.url_name == 'manage_bookings' %}active{% endif %}" href="{% url 'manage_bookings' %}">Manage bookings</a></li>
             {% endif %}
             <li>
                 <a class="{% if request.resolver_match.url_name == 'list_services' %}active{% endif %}" href="{% url 'list_services' %}">List services</a>
             </li>
-            <li><a href="#">Messages</a></li>
-            <li><a href="#">History</a></li>
+            <li><a class="{% if request.resolver_match.url_name == 'messages' %}active{% endif %}" href="{% url 'inbox' %}">Messages</a></li>
+            <li><a class="{% if request.resolver_match.url_name == 'view_history' %}active{% endif %}" href="{% url 'view_history' %}">History</a></li>
             <li><a href="#">Support</a></li>
         </ul>
     </div>

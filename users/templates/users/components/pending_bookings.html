@@ -1,0 +1,24 @@
+<!-- Pending provider's bookings -->
+<h2>Pending Bookings</h2>
+{% if pending_bookings %}
+    <ul class="booking-list">
+      {% for booking in pending_bookings %}
+        <li class="booking-card">
+          <p><strong>{{ booking.client.first_name }}</strong> wants to book <strong>{{ booking.service.name }}</strong></p>
+          <small>Requested on: {{ booking.booking_date|date:"M d, Y" }}</small><br><br>
+
+          <form method="post" action="{% url 'accept_booking' booking.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Accept</button>
+          </form>
+
+          <form method="post" action="{% url 'reject_booking' booking.id %}" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit">Reject</button>
+          </form>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No new booking requests at the moment.</p>
+{% endif %}

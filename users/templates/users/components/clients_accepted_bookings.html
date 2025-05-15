@@ -1,0 +1,13 @@
+<h2>Accepted bookings</h2>
+{% if clients_accepted_bookings %}
+    <ul class="booking-list">
+      {% for booking in clients_accepted_bookings %}
+        <li class="booking-card">
+          <p>You booked <strong>{{ booking.service.name }}</strong></p>
+          <small>Requested on: {{ booking.booking_date|date:"M d, Y" }}</small><br><br>
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No bookings in progress at the moment.</p>
+{% endif %}

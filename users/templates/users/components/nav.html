@@ -20,7 +20,7 @@
                 {% block search %}
                 {% include "users/components/search.html" %}
                 {% endblock search %}
-                <div>messages</div>
+                <div><a href="{% url 'inbox' %}">messages</a></div>
                 {% else %}
                 <li><a class="nav-bar-link" href="{% url 'about_us' %}">About Us</a></li>
                 <li><a class="nav-bar-link" href="{% url 'contact' %}">Contact Us</a></li>
@@ -37,7 +37,7 @@
                 <p><strong>{{ request.user.username }}</strong></p>
                 <hr>
                 <a href="{% url 'password_change' %}">Change Password</a>
-                <a href="#">My Profile (coming soon)</a>
+                <a href="{% url 'edit_profile' %}">My Profile</a>
                 <a href="#">Settings (coming soon)</a>
                 <a href="{% url 'user-logout' %}">Logout</a>
             </div>
